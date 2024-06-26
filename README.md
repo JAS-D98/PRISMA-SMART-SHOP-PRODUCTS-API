@@ -1,4 +1,4 @@
-# SMART-SHOP PRODUCTS API DOCUMENTATION WITH PISMA
+# SMART-SHOP PRODUCTS API DOCUMENTATION WITH PRISMA
 ![A cover photo](./assets/banner1.png)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
