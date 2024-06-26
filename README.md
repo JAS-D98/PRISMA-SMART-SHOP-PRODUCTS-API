@@ -1,5 +1,5 @@
 # SMART-SHOP PRODUCTS API DOCUMENTATION WITH PISMA
-![A cover photo](./assets/banner.png)
+![A cover photo](./assets/banner1.png)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -226,7 +226,7 @@ When there's a problem with the server and the server is not able to get data fr
 To update details for a single product by id.  
 Here we use PATCH method to enable user do selective update.
 1. URL-"/:id" e.g.
-```http://localhost:5000/api/products/1```
+```http://localhost:5000/api/products/550e8400-e29b-41d4-a716-446655440000```
 1. Method-"PATCH"    
 
 
@@ -279,7 +279,7 @@ When there's a problem with the server and the server is not able to get data fr
 ### DELETE SPECIFIC PRODUCTS BY ID  
 To delete a single product based on it's id
 1. URL-"/:id" e.g.
-```http://localhost:5000/api/products/1```
+```http://localhost:5000/api/products/550e8400-e29b-41d4-a716-446655440000```
 1. Method-"DELETE"  
 
 #### Status 200 OK
