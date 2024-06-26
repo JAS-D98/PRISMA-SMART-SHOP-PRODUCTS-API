@@ -76,7 +76,7 @@ When the response has a status of ***200*** meaning the  response was okay and s
         "oid": null,
         "rows": [
             {
-                "productid": "1",
+                "productid": "550e8400-e29b-41d4-a716-446655440000",
                 "productthumbnail": "http://dummyimage.com/240x100.png/cc0000/ffffff",
                 "producttitle": "Coconut - Shredded, Unsweet",
                 "productdescription": "sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus",
@@ -120,7 +120,7 @@ When there's a problem with the server and the server is not able to get data fr
 ### GET SPECIFIC PRODUCTS BY ID    
 To retrieve a single product from the database based on its id.
 1. URL-"/:id" e.g.
-```http://localhost:5000/api/products/1```
+```http://localhost:5000/api/products/550e8400-e29b-41d4-a716-446655440000```
 1. Method-"GET"    
 
 #### Status 200 OK
@@ -135,7 +135,7 @@ To retrieve a single product from the database based on its id.
         "oid": null,
         "rows": [
             {
-                "productid": "1",
+                "productid": "550e8400-e29b-41d4-a716-446655440000",
                 "productthumbnail": "http://dummyimage.com/240x100.png/cc0000/ffffff",
                 "producttitle": "Coconut - Shredded, Unsweet",
                 "productdescription": "sapien arcu sed augue aliquam erat volutpat in congue etiam justo etiam pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras non velit nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus",
