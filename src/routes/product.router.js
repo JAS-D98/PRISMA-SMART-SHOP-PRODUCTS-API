@@ -1,7 +1,6 @@
 import { Router } from "express";
-import { PrismaClient } from "@prisma/client"
 import {z} from "zod"
-const prisma = new PrismaClient()
+import { addProduct, getProductId, getProducts, removeProduct, updateProduct } from "../controllers/product.controller.js";
 const router = Router();
 
 // zod product schema
@@ -30,90 +29,19 @@ const validateProduct=(req, res, next)=>{
 
 
 // Route for getting all products
-router.get("/", async(req, res) => {
-    try {
-        const product=await prisma.product.findMany();
-        if(!product){
-            res.status(404).json({success:false, data: "Products not found"})        
-        }
-        res.status(200).json({success:true, data: product})
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).json({success: false, data: "A problem occurred with the server"})
-    }
-});
+router.get("/", getProducts);
 
 // Route for finding product by id
-router.get("/:id", async(req, res)=>{
-    const id=req.params.id;
-    try {
-        const product=await prisma.product.findUnique({
-            where:{
-                productId:id
-            }
-        })
-        if(!product){
-            res.status(404).json({success:false, data: "Product not found"})        
-        }
-        res.status(200).json({success:true, data: product})
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).json({success: false, data: "A problem occurred with the server"}) 
-    }
-})
+router.get("/:id", getProductId)
 
 
 // Route for updating products by id
-router.patch("/:id", validateProduct, async(req, res)=>{
-    const id=req.params.id;
-    const { productThumbnail,  productTitle, productDescription, productCost, onOffer}=req.body;
-    try {
-        const product=await prisma.product.update({
-            where: { productId:id },
-            data: {productThumbnail,productTitle,productDescription,productCost,onOffer}
-        });
-        res.status(200).json({success:true, data: "Product updated successfully"})
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).json({success: false, data: "A problem occurred with the server"})  
-    }
-})
+router.patch("/:id", validateProduct, updateProduct)
 
 // Route for adding products
-router.post("/",validateProduct, async(req, res)=>{
-    try {
-        const { productThumbnail,  productTitle, productDescription, productCost, onOffer}=req.body;
-        const addProduct=await prisma.product.create({
-            data:{
-                productThumbnail,
-                productTitle,
-                productDescription,
-                productCost,
-                onOffer
-            }
-        });
-        res.status(201).json({success:true, data: `You have successfully added ${addProduct.productTitle}`})
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).json({success: false, data: "A problem occurred with the server"})
-    }
-});
+router.post("/",validateProduct, addProduct);
 
 // Route for deleting products by id
-router.delete("/:id", async(req, res)=>{
-    try {
-       const id=req.params.id;
-       const removeProduct=await prisma.product.delete({
-        where:{productId:id}
-       }) 
-       if(!removeProduct){
-        res.status(404).json({success:false, data: "Product not found"})        
-        }
-       res.status(200).json({success:true, data: "product has been successfully removed"})
-    } catch (error) {
-        console.log(error.message);
-        res.status(500).json({success: false, data: "A problem occurred with the server"})
-    }
-})
+router.delete("/:id",removeProduct)
 
 export default router;
